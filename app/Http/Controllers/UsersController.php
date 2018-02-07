@@ -6,6 +6,7 @@ use Auth;
 use Mail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Notifications\ResetPassword;
 
 class UsersController extends Controller
 {
@@ -101,6 +102,11 @@ class UsersController extends Controller
         $user->delete();
         session()->flash('success', '成功删除用户！');
         return back();
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
     }
 
     protected function sendEmailConfirmationTo($user)
