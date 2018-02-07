@@ -28,3 +28,9 @@ Route::post('login', 'SessionsController@store')->name('login');
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
 Route::get('/users/{user}/edit', 'UsersController@edit')->name('users.edit');
+
+
+/**
+ * 测试在laravel框架中用vue.js
+ */
+Route::view('testVueJs','vue.test');

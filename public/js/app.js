@@ -968,8 +968,12 @@ module.exports = __webpack_require__(42);
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -987,11 +991,26 @@ window.Vue = __webpack_require__(35);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(38));
+//Vue.component('example-component', require('./components/ExampleComponent.vue'));// 注释掉
+ // 引入ExampleComponent 组件
+/**
+ * 下面两种方法都可以实现vue.js的渲染
+ * @type {Vue|*}
+ */
+var app = new Vue({
+  el: '#app',
+  render: function render(h) {
+    return h(__WEBPACK_IMPORTED_MODULE_0__components_ExampleComponent_vue___default.a);
+  }
+  // template: '<exampleComponent />',
+  // components: {exampleComponent}
+});
 
-// const app = new Vue({
-//     el: '#app'
-// });
+/**
+ * 说明：app.js 是构建 Vue 项目的主文件，最后所有的组件都会被引入到这个文件，在引入所有组件之前，
+ * bootstrap.js 文件做了一些初始化的操作。同时，因为有了 window.Vue = require(‘vue’) 这句话，
+ * 就不再需要使用 import Vue from ‘vue’ 重复导入 Vue 了。
+ */
 
 /***/ }),
 /* 11 */
@@ -43085,8 +43104,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            msg: 'This is a Laravel with Vue and Element Demo.'
+        };
+    },
     mounted: function mounted() {
         console.log('Component mounted.');
     }
@@ -43100,32 +43126,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
-          _c("div", { staticClass: "panel panel-default" }, [
-            _c("div", { staticClass: "panel-heading" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "panel-body" }, [
-              _vm._v(
-                "\n                    I'm an example component!\n                "
-              )
-            ])
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-8 col-md-offset-2" }, [
+        _c("div", { staticClass: "panel panel-default" }, [
+          _c("div", { staticClass: "panel-heading" }, [
+            _vm._v("Example Component")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _vm._v(
+              "\n                    I'm an example component!\n                "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "panel-body" }, [
+            _vm._v(
+              "\n                    " + _vm._s(_vm.msg) + "\n                "
+            )
           ])
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
