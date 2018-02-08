@@ -10,6 +10,10 @@ class Status extends Model
 
     protected $fillable = ['content'];
 
+    /**
+     * explain 微博内容表与用户对应关系
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);

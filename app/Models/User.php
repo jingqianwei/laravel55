@@ -57,21 +57,38 @@ class User extends Authenticatable
         return "http://www.gravatar.com/avatar/$hash?s=$size";
     }
 
+    /**
+     * explain 微博数据表
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function statuses()
     {
         return $this->hasMany(Status::class);
     }
 
+    /**
+     * explain 这里的followers表就是laravel中的followers_user这个中间关联表
+     * $user->followers()来获取粉丝关系列表
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function followers()
     {
         return $this->belongsToMany(User::Class, 'followers', 'user_id', 'follower_id');
     }
 
+    /**
+     * explain $user->followings()来获取用户关注人列表
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function followings()
     {
         return $this->belongsToMany(User::Class, 'followers', 'follower_id', 'user_id');
     }
 
+    /**
+     * explain 在主页上显示所有关注用户的微博动态
+     * @return mixed
+     */
     public function feed()
     {
         $user_ids = Auth::user()->followings->pluck('id')->toArray();
@@ -81,6 +98,10 @@ class User extends Authenticatable
             ->orderBy('created_at', 'desc');
     }
 
+    /**
+     * explain 关注用户
+     * @param $user_ids
+     */
     public function follow($user_ids)
     {
         if (!is_array($user_ids)) {
@@ -89,6 +110,10 @@ class User extends Authenticatable
         $this->followings()->sync($user_ids, false);
     }
 
+    /**
+     * explain 取消关注
+     * @param $user_ids
+     */
     public function unfollow($user_ids)
     {
         if (!is_array($user_ids)) {
@@ -97,6 +122,11 @@ class User extends Authenticatable
         $this->followings()->detach($user_ids);
     }
 
+    /**
+     * explain 判断用户是否已被关注
+     * @param $user_id
+     * @return mixed
+     */
     public function isFollowing($user_id)
     {
         return $this->followings->contains($user_id);
