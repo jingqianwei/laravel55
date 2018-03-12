@@ -88,6 +88,6 @@ Route::post('/users/followers/{user}', 'FollowersController@store')->name('follo
 Route::delete('/users/followers/{user}', 'FollowersController@destroy')->name('followers.destroy');
 
 /**
- * 测试在laravel框架中用vue.js
+ * 测试在laravel框架中用react.js
  */
 Route::view('testReactJs','jsframework.react');
