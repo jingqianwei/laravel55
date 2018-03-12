@@ -1,4 +1,72 @@
 <?php
+//try
+//{
+//    checkNum(2);
+//    //If the exception is thrown, this text will not be shown
+//    echo 'If you see this, the number is 1 or below';
+//}
+////捕获异常
+//catch(Exception $e)
+//{
+//    throw $e;
+//    //echo 'Message: ' .$e->getMessage();
+//}
+require __DIR__.'/SuperModuleInterface.php';
+require __DIR__.'/Container.php';
+require __DIR__.'/Superman.php';
+require __DIR__.'/XPower.php';
+require __DIR__.'/UltraBomb.php';
+/**
+ * 手动注入
+ *
+ * 超能力模组
+ * $superModule = new XPower;
+ * 初始化一个超人，并注入一个超能力模组依赖
+ * $superMan = new Superman($superModule);
+ */
+
+/**
+ * 下面是自动注入
+ */
+// 创建一个容器（后面称作超级工厂）
+$container = new Container;
+
+// 向该 超级工厂 添加 超人 的生产脚本
+$container->bind('superman', function($container, $moduleName) {
+    return new Superman($container->make($moduleName));
+    /**
+     * 这个返回值可以分两步
+     * 第一步，$container->make($moduleName)，先实例化超能力模组 $superModule = $container->make($moduleName);
+     * 第二部 初始化一个超人，并注入一个超能力模组依赖 new Superman($superModule);
+     * 这两步组合在一起的就是上面的效果
+    */
+});
+/*效果就是 $container->bind['superman'] = function($container, $moduleName) {
+    return new Superman($container->make($moduleName));
+}*/
+
+
+// 向该 超级工厂 添加 超能力模组 的生产脚本
+$container->bind('xpower', function($container) {
+    return new XPower;
+});
+/*效果就是 $container->bind['xpower'] = function($container) {
+return new XPower;
+}*/
+
+// 同上
+$container->bind('ultrabomb', function($container) {
+    return new UltraBomb;
+});
+/*效果就是 $container->bind['ultrabomb'] = function($container) {
+    return new UltraBomb;
+}*/
+
+// ******************  华丽丽的分割线  **********************
+// 开始启动生产
+$superman_1 = $container->make('superman', ['xpower']); //==> 注入xpower模组到superman
+$superman_2 = $container->make('superman', ['ultrabomb']);//==> 注入xpower，ultrabomb模组到superman
+$superman_3 = $container->make('superman', ['xpower']);//==> 注入xpower，ultrabomb，xpower模组到superman
 /**
  * Laravel - A PHP Framework For Web Artisans
  *

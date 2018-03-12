@@ -13,6 +13,14 @@
 /**
     定义路由
  */
+
+//use Intervention\Image\Facades\Image;
+
+//Route::get('/', function(){
+//    $path = public_path('demo.jpg');
+//    $img = Image::make($path)->resize(300, 200);
+//    return $img->response('jpg');
+//});
 Route::get('/', 'StaticPagesController@home')->name('home');
 Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about')->name('about');
@@ -82,4 +90,4 @@ Route::delete('/users/followers/{user}', 'FollowersController@destroy')->name('f
 /**
  * 测试在laravel框架中用vue.js
  */
-Route::view('testVueJs','vue.test');
+Route::view('testReactJs','jsframework.react');

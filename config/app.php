@@ -177,12 +177,18 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        /*
+        /**
          * phpstorm ide提示插件
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
+        /**
+         * Intervention Image工具
+         */
+        Intervention\Image\ImageServiceProvider::class,
+        /**
+         * 消息队列
+         */
+        Laravel\Horizon\HorizonServiceProvider::class,
     ],
 
     /*
@@ -231,7 +237,14 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        /**
+         * Intervention Image工具
+         */
+        'Image' => Intervention\Image\Facades\Image::class,
+        /**
+         * 消息队列
+         */
+        'Horizon'  => Laravel\Horizon\HorizonServiceProvider::class,
     ],
 
 ];
