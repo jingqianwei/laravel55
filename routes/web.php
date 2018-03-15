@@ -13,7 +13,6 @@
 /**
     定义路由
  */
-
 //use Intervention\Image\Facades\Image;
 
 //Route::get('/', function(){
@@ -91,3 +90,11 @@ Route::delete('/users/followers/{user}', 'FollowersController@destroy')->name('f
  * 测试在laravel框架中用react.js
  */
 Route::view('testReactJs','jsframework.react');
+
+Route::post('/minicart/site/create', function() {
+    return response()->json([
+        'data'      => request()->input('domain'),
+        'message'   => '',
+        'code'      => 200,
+    ]);
+});
