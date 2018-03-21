@@ -24,7 +24,6 @@ Axios.interceptors.request.use(
 
 // 拦截所有的 api 响应，可以实现自动弹窗报错
 Axios.interceptors.response.use(
-
     net_response => {   // when HTTP_STATUS in [ 200 , 299 ]
         const json_response = net_response.data;
         if (json_response.code === json_response_codes.SUCCESS) {

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Checkbox} from 'element-react'
+import { Checkbox } from 'element-react'
 import api from '../../api'
 
 export default class CheckboxContent extends React.Component {
@@ -25,8 +25,8 @@ export default class CheckboxContent extends React.Component {
     }
 
     async handleCheckedCitiesChange(value) {
-        const checkedCount = value.length;
-        const citiesLength = this.state.cities.length;
+        const checkedCount = value.length
+        const citiesLength = this.state.cities.length
 
         this.setState({
             checkedCities: value,
@@ -34,6 +34,7 @@ export default class CheckboxContent extends React.Component {
             isIndeterminate: checkedCount > 0 && checkedCount < citiesLength,
         });
 
+        //返回的数据格式固定了，如果要去修改返回的结果数据，就要去修改axios中的结果处理了
         let result = await api.minicart.site.create({
             domain: 'www.baidu.com'
         })

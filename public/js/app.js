@@ -91572,6 +91572,7 @@ var CheckboxContent = function (_React$Component) {
                                     isIndeterminate: checkedCount > 0 && checkedCount < citiesLength
                                 });
 
+                                //返回的数据格式固定了，如果要去修改返回的结果数据，就要去修改axios中的结果处理了
                                 _context.next = 5;
                                 return __WEBPACK_IMPORTED_MODULE_3__api__["a" /* default */].minicart.site.create({
                                     domain: 'www.baidu.com'
@@ -93386,6 +93387,7 @@ var JSON_RESPONSE_CODES = {
 "use strict";
 var config = {
     debug: true,
+    base_url: '//' + window.location.hostname,
     // erp_base_url: process.env.NODE_ENV === 'development' ? 'http://erp.vm' : 'http://erp.ewasbbm.com',
     // cdn_base_url: process.env.NODE_ENV === 'development' ? 'http://erp.vm' : 'http://erp.ewasbbm.com'
     erp_base_url: '//' + window.location.hostname,

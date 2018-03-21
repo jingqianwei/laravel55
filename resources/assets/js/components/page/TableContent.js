@@ -1,5 +1,5 @@
-import React from "react";
-import { Table } from 'element-react';
+import React from "react"
+import { Table } from 'element-react'
 
 export default class TableContent extends React.Component {
     constructor(props) {
