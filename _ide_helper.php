@@ -1,14 +1,13 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.33 on 2018-02-05.
+ * Generated for Laravel 5.5.39 on 2018-03-29 08:19:08.
+ *
+ * This file should not be included in your code, only analyzed by your IDE!
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
  */
-namespace  {
-    exit("This file should not be included, only analyzed by your IDE");
-}
 
 namespace Illuminate\Support\Facades { 
 
@@ -1648,7 +1647,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the currently authenticated user.
          *
-         * @return \App\Models\User|null
+         * @return \App\Models\User|null 
          * @static 
          */ 
         public static function user()
@@ -1683,7 +1682,7 @@ namespace Illuminate\Support\Facades {
          * Log the given user ID into the application without sessions or cookies.
          *
          * @param mixed $id
-         * @return \App\Models\User|false
+         * @return \App\Models\User|false 
          * @static 
          */ 
         public static function onceUsingId($id)
@@ -1747,7 +1746,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \App\Models\User|false
+         * @return \App\Models\User|false 
          * @static 
          */ 
         public static function loginUsingId($id, $remember = false)
@@ -1794,7 +1793,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\Models\User
+         * @return \App\Models\User 
          * @static 
          */ 
         public static function getLastAttempted()
@@ -1896,7 +1895,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Return the currently cached user.
          *
-         * @return \App\Models\User|null
+         * @return \App\Models\User|null 
          * @static 
          */ 
         public static function getUser()
@@ -1942,7 +1941,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if the current user is authenticated.
          *
-         * @return \App\Models\User
+         * @return \App\Models\User 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */ 
@@ -2596,8 +2595,8 @@ namespace Illuminate\Support\Facades {
          * @param string $key The key of the item to store.
          * @param mixed $value The value of the item to store, must be serializable.
          * @param null|int|\DateInterval $ttl Optional. The TTL value of this item. If no value is sent and
-         *                                     the driver supports TTL then the library may set a default value
-         *                                     for it or let the driver take care of that.
+         *                                      the driver supports TTL then the library may set a default value
+         *                                      for it or let the driver take care of that.
          * @return bool True on success and false on failure.
          * @throws \Psr\SimpleCache\InvalidArgumentException
          *   MUST be thrown if the $key string is not a legal value.
@@ -2626,8 +2625,8 @@ namespace Illuminate\Support\Facades {
          *
          * @param \Psr\SimpleCache\iterable $values A list of key => value pairs for a multiple-set operation.
          * @param null|int|\DateInterval $ttl Optional. The TTL value of this item. If no value is sent and
-         *                                      the driver supports TTL then the library may set a default value
-         *                                      for it or let the driver take care of that.
+         *                                       the driver supports TTL then the library may set a default value
+         *                                       for it or let the driver take care of that.
          * @return bool True on success and false on failure.
          * @throws \Psr\SimpleCache\InvalidArgumentException
          *   MUST be thrown if $values is neither an array nor a Traversable,
@@ -6715,6 +6714,46 @@ namespace Illuminate\Support\Facades {
          
     }
 
+    class Redis {
+        
+        /**
+         * Get a Redis connection by name.
+         *
+         * @param string|null $name
+         * @return \Illuminate\Redis\Connections\Connection 
+         * @static 
+         */ 
+        public static function connection($name = null)
+        {
+            return \Illuminate\Redis\RedisManager::connection($name);
+        }
+        
+        /**
+         * Resolve the given connection by name.
+         *
+         * @param string|null $name
+         * @return \Illuminate\Redis\Connections\Connection 
+         * @throws \InvalidArgumentException
+         * @static 
+         */ 
+        public static function resolve($name = null)
+        {
+            return \Illuminate\Redis\RedisManager::resolve($name);
+        }
+        
+        /**
+         * Return all of the created connections.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function connections()
+        {
+            return \Illuminate\Redis\RedisManager::connections();
+        }
+         
+    }
+
     class Request {
         
         /**
@@ -7198,7 +7237,7 @@ namespace Illuminate\Support\Facades {
          * @param array $cookies The COOKIE parameters
          * @param array $files The FILES parameters
          * @param array $server The SERVER parameters
-         * @param string|resource $content The raw body data
+         * @param string|resource|null $content The raw body data
          * @static 
          */ 
         public static function initialize($query = array(), $request = array(), $attributes = array(), $cookies = array(), $files = array(), $server = array(), $content = null)
@@ -7231,7 +7270,7 @@ namespace Illuminate\Support\Facades {
          * @param array $cookies The request cookies ($_COOKIE)
          * @param array $files The request files ($_FILES)
          * @param array $server The server parameters ($_SERVER)
-         * @param string|resource $content The raw body data
+         * @param string|resource|null $content The raw body data
          * @return static 
          * @static 
          */ 
@@ -12279,6 +12318,74 @@ namespace Illuminate\Support\Facades {
  
 }
 
+namespace Intervention\Image\Facades { 
+
+    class Image {
+        
+        /**
+         * Overrides configuration settings
+         *
+         * @param array $config
+         * @static 
+         */ 
+        public static function configure($config = array())
+        {
+            return \Intervention\Image\ImageManager::configure($config);
+        }
+        
+        /**
+         * Initiates an Image instance from different input types
+         *
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function make($data)
+        {
+            return \Intervention\Image\ImageManager::make($data);
+        }
+        
+        /**
+         * Creates an empty image canvas
+         *
+         * @param integer $width
+         * @param integer $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function canvas($width, $height, $background = null)
+        {
+            return \Intervention\Image\ImageManager::canvas($width, $height, $background);
+        }
+        
+        /**
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
+         *
+         * @param \Closure $callback
+         * @param integer $lifetime
+         * @param boolean $returnObj
+         * @return \Image 
+         * @static 
+         */ 
+        public static function cache($callback, $lifetime = null, $returnObj = false)
+        {
+            return \Intervention\Image\ImageManager::cache($callback, $lifetime, $returnObj);
+        }
+         
+    }
+ 
+}
+
+namespace Laravel\Horizon { 
+
+    class Horizon {
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -13261,6 +13368,21 @@ namespace  {
             public static function mergeWheres($wheres, $bindings)
             {    
                 \Illuminate\Database\Query\Builder::mergeWheres($wheres, $bindings);
+            }
+         
+            /**
+             * Prepare the value and operator for a where clause.
+             *
+             * @param string $value
+             * @param string $operator
+             * @param bool $useDefault
+             * @return array 
+             * @throws \InvalidArgumentException
+             * @static 
+             */ 
+            public static function prepareValueAndOperator($value, $operator, $useDefault = false)
+            {    
+                return \Illuminate\Database\Query\Builder::prepareValueAndOperator($value, $operator, $useDefault);
             }
          
             /**
@@ -14385,6 +14507,8 @@ namespace  {
 
     class Redirect extends \Illuminate\Support\Facades\Redirect {}
 
+    class Redis extends \Illuminate\Support\Facades\Redis {}
+
     class Request extends \Illuminate\Support\Facades\Request {}
 
     class Response extends \Illuminate\Support\Facades\Response {}
@@ -14402,6 +14526,10 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class Image extends \Intervention\Image\Facades\Image {}
+
+    class Horizon extends \Laravel\Horizon\Horizon {}
  
 }
 

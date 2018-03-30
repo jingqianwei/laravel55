@@ -98,3 +98,6 @@ Route::post('/minicart/site/create', function() {
         'code'      => 200,
     ]);
 });
+
+Route::get('/testArrayObject','TestController@testArrayObject');
+Route::get('/testArray','TestArrController@testArray');
