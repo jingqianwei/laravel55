@@ -188,7 +188,12 @@ return [
         /**
          * 消息队列
          */
-        Laravel\Horizon\HorizonServiceProvider::class,
+        //Laravel\Horizon\HorizonServiceProvider::class,
+
+        /**
+         * AdminLTE后台
+         */
+        JeroenNoten\LaravelAdminLte\ServiceProvider::class,
     ],
 
     /*
@@ -244,7 +249,7 @@ return [
         /**
          * 消息队列
          */
-        'Horizon'  => Laravel\Horizon\HorizonServiceProvider::class,
+        //'Horizon'  => Laravel\Horizon\HorizonServiceProvider::class,
     ],
 
 ];
